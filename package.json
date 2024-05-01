@@ -25,12 +25,12 @@
   "dependencies": {
     "lodash.isarray": "^4.0.0",
     "lodash.isfunction": "^3.0.9",
+    "lodash.isplainobject": "^4.0.6",
     "lodash.keys": "^4.2.0",
-    "lodash.values": "^4.3.0",
-    "lodash.isplainobject": "^4.0.6"
+    "lodash.values": "^4.3.0"
   },
   "devDependencies": {
-    "coveralls": "^3.0.8",
+    "coveralls-next": "^4.2.1",
     "eslint": "^6.7.1",
     "jasmine": "^3.1.0",
     "nyc": "^14.1.1"
