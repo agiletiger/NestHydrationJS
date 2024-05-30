@@ -12,7 +12,7 @@ describe('NestHydrationJS', function () {
 				};
 				result = NestHydrationJS.buildMeta(mapping);
 			});
-			
+
 			it('should match expected structure', function () {
 				var expected = {
 					primeIdColumnList: ['aColumnName'],
@@ -35,7 +35,7 @@ describe('NestHydrationJS', function () {
 				expect(result).toEqual(expected);
 			});
 		});
-		
+
 		describe('simple mapping with number type', function () {
 			var result;
 			beforeEach(function () {
@@ -44,7 +44,7 @@ describe('NestHydrationJS', function () {
 				};
 				result = NestHydrationJS.buildMeta(mapping);
 			});
-			
+
 			it('should match expected structure', function () {
 				var expected = {
 					primeIdColumnList: ['a'],
@@ -67,7 +67,7 @@ describe('NestHydrationJS', function () {
 				expect(result).toEqual(expected);
 			});
 		});
-		
+
 		describe('simple mapping with boolean type', function () {
 			var result;
 			beforeEach(function () {
@@ -76,7 +76,7 @@ describe('NestHydrationJS', function () {
 				};
 				result = NestHydrationJS.buildMeta(mapping);
 			});
-			
+
 			it('should match expected structure', function () {
 				var expected = {
 					primeIdColumnList: ['a'],
@@ -141,7 +141,7 @@ describe('NestHydrationJS', function () {
 				};
 				result = NestHydrationJS.buildMeta(mapping);
 			});
-			
+
 			it('should match expected structure', function () {
 				var expected = {
 					primeIdColumnList: ['a'],
@@ -259,7 +259,7 @@ describe('NestHydrationJS', function () {
 				}];
 				result = NestHydrationJS.buildMeta(mapping);
 			});
-			
+
 			it('should match expected structure', function () {
 				var expected = {
 					primeIdColumnList: ['_a'],
@@ -283,7 +283,7 @@ describe('NestHydrationJS', function () {
 				expect(result).toEqual(expected);
 			});
 		});
-		
+
 		describe('multiple mapping array, id being non first', function () {
 			var result;
 			beforeEach(function () {
@@ -293,7 +293,7 @@ describe('NestHydrationJS', function () {
 				}];
 				result = NestHydrationJS.buildMeta(mapping);
 			});
-			
+
 			it('should match expected structure', function () {
 				var expected = {
 					primeIdColumnList: ['_b'],
@@ -317,7 +317,7 @@ describe('NestHydrationJS', function () {
 				expect(result).toEqual(expected);
 			});
 		});
-		
+
 		describe('multiple mapping array with id having type', function () {
 			var result;
 			beforeEach(function () {
@@ -327,7 +327,7 @@ describe('NestHydrationJS', function () {
 				}];
 				result = NestHydrationJS.buildMeta(mapping);
 			});
-			
+
 			it('should match expected structure', function () {
 				var expected = {
 					primeIdColumnList: ['_a'],
@@ -402,7 +402,7 @@ describe('NestHydrationJS', function () {
 				}];
 				result = NestHydrationJS.buildMeta(mapping);
 			});
-			
+
 			it('should match expected structure', function () {
 				var expected = {
 					primeIdColumnList: ['_a', '_e__f'],
@@ -461,26 +461,26 @@ describe('NestHydrationJS', function () {
 				// expect(result).toEqual(expected);
 			});
 		});
-		
+
 		describe('malformed mapping, empty array in place as property', function () {
 			var error;
 			beforeEach(function () {
 				var mapping = {
 					a: []
 				};
-				
+
 				try {
 					NestHydrationJS.buildMeta(mapping);
 				} catch (err) {
 					error = err;
 				}
 			});
-			
+
 			it('should match expected error', function () {
 				expect(error.message).toEqual('invalid structPropToColumnMap format - property \'a\' can not be an empty array');
 			});
 		});
-		
+
 		describe('malformed mapping, base array should not have a multiple items as there can only be one root to the datastructure', function () {
 			var error;
 			beforeEach(function () {
@@ -489,88 +489,88 @@ describe('NestHydrationJS', function () {
 					{a: 'rootA_'},
 					{b: 'rootB_'}
 				];
-				
+
 				try {
 					NestHydrationJS.buildMeta(mapping);
 				} catch (err) {
 					error = err;
 				}
 			});
-			
+
 			it('should match expected error', function () {
 				expect(error.message).toEqual('invalid structPropToColumnMap format - can not have multiple roots for structPropToColumnMap, if an array it must only have one item');
 			});
 		});
-		
+
 		describe('malformed mapping, number as property', function () {
 			var error;
 			beforeEach(function () {
 				var mapping = {
 					a: 5
 				};
-				
+
 				try {
 					NestHydrationJS.buildMeta(mapping);
 				} catch (err) {
 					error = err;
 				}
 			});
-			
+
 			it('should match expected error', function () {
 				expect(error.message).toEqual('invalid structPropToColumnMap format - property \'a\' must be either a string, a plain object or an array');
 			});
 		});
-		
+
 		describe('malformed mapping, non plain object as property', function () {
 			var error;
 			beforeEach(function () {
 				var mapping = {
 					a: new Error()
 				};
-				
+
 				try {
 					NestHydrationJS.buildMeta(mapping);
 				} catch (err) {
 					error = err;
 				}
 			});
-			
+
 			it('should match expected error', function () {
 				expect(error.message).toEqual('invalid structPropToColumnMap format - property \'a\' must be either a string, a plain object or an array');
 			});
 		});
-		
+
 		describe('malformed mapping, empty object as property', function () {
 			var error;
 			beforeEach(function () {
 				var mapping = {
 					a: {}
 				};
-				
+
 				try {
 					NestHydrationJS.buildMeta(mapping);
 				} catch (err) {
 					error = err;
 				}
 			});
-			
+
 			it('should match expected error', function () {
 				expect(error.message).toEqual('invalid structPropToColumnMap format - property \'a\' can not be an empty object');
 			});
 		});
-		
+
 		describe('malformed mapping, empty object as property', function () {
 			var error;
 			beforeEach(function () {
 				var mapping = {};
-				
+
 				try {
 					NestHydrationJS.buildMeta(mapping);
 				} catch (err) {
 					error = err;
 				}
 			});
-			
+
 			it('should match expected error', function () {
 				expect(error.message).toEqual('invalid structPropToColumnMap format - the base object can not be an empty object');
 			});
